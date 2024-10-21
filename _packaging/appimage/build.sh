@@ -31,10 +31,10 @@ arquivoZip="./$tag.tar.gz"
 if [ -f "$arquivoZip" ]; then
     echo "O arquivo $arquivoZip existe."
 else
-    wget https://github.com/rafatosta/zapzap/archive/refs/tags/$tag.tar.gz
+    wget https://github.com/snuggerdog/pulsesmsreboot/archive/refs/tags/$tag.tar.gz
 fi
 
-pasta="./zapzap-$tag"
+pasta="./pulsesmsreboot-$tag"
 if [ -d "$pasta" ]; then
     echo "A pasta $pasta existe."
 else
@@ -43,7 +43,7 @@ fi
 
 # Cria arquivo .spec
 
-echo "Criado zapzap.spec"
+echo "Criado pulsesmsreboot.spec"
 
 # Conteúdo a ser adicionado ao arquivo
 spec_txt="# -*- mode: python ; coding: utf-8 -*-
@@ -52,10 +52,10 @@ spec_txt="# -*- mode: python ; coding: utf-8 -*-
 block_cipher = None
 
 
-a = Analysis(['./zapzap/__main__.py'],
+a = Analysis(['./pulsesmsreboot/__main__.py'],
              pathex=[],
              binaries=[],
-             datas=[('zapzap', 'zapzap')],
+             datas=[('pulsesmsreboot', 'pulsesmsreboot')],
              hiddenimports=[],
              hookspath=[],
              hooksconfig={},
@@ -72,7 +72,7 @@ exe = EXE(pyz,
           a.scripts,
           [],
           exclude_binaries=True,
-          name='zapzap',
+          name='pulsesmsreboot',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -89,10 +89,10 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                upx_exclude=[],
-               name='zapzap')"
+               name='pulsesmsreboot')"
 
 
-spec_file="$pasta/zapzap.spec"
+spec_file="$pasta/pulsesmsreboot.spec"
 
 # Adiciona o novo conteúdo ao arquivo
 echo "$spec_txt" >> "$spec_file"
@@ -104,10 +104,10 @@ pyinstaller $spec_file -y
 
 ## AppRun file
 
-appRun="#!/bin/sh\n\ncd \"\$(dirname \"\$0\")\"\nexec ./zapzap"
+appRun="#!/bin/sh\n\ncd \"\$(dirname \"\$0\")\"\nexec ./pulsesmsreboot"
 
-echo -e "$appRun" > "./dist/zapzap/AppRun"
-chmod +x "./dist/zapzap/AppRun"
+echo -e "$appRun" > "./dist/pulsesmsreboot/AppRun"
+chmod +x "./dist/pulsesmsreboot/AppRun"
 
 
 ## build.sh file
@@ -126,17 +126,17 @@ fi
 # move result in build folder
 mv hello-world-appimage-*-$ARCH.AppImage ../build"
 
-echo -e "$build_file" > "./dist/zapzap/build.sh"
-chmod +x "./dist/zapzap/build.sh"
+echo -e "$build_file" > "./dist/pulsesmsreboot/build.sh"
+chmod +x "./dist/pulsesmsreboot/build.sh"
 
 # Copiar icone
 
-cp "./zapzap-$tag/share/icons/com.rtosta.zapzap.svg" "./dist/zapzap/com.rtosta.zapzap.svg"
+cp "./pulsesmsreboot-$tag/share/icons/com.snuggerdog.pulsesmsreboot.svg" "./dist/pulsesmsreboot/com.snuggerdog.pulsesmsreboot.svg"
 
 # Copiar .desktop
-cp "./zapzap-$tag/share/applications/com.rtosta.zapzap.desktop" "./dist/zapzap/zapzap.desktop"
+cp "./pulsesmsreboot-$tag/share/applications/com.snuggerdog.pulsesmsreboot.desktop" "./dist/pulsesmsreboot/pulsesmsreboot.desktop"
 
-ARCH=x86_64 ./appimagetool-x86_64.AppImage "./dist/zapzap/"
+ARCH=x86_64 ./appimagetool-x86_64.AppImage "./dist/pulsesmsreboot/"
 
 
 ## remove arquivos desnecessários

@@ -10,5 +10,5 @@ os.system('./_scripts/build-translations.sh')
 debug = True
 
 # Run the app
-os.system('python -m zapzap ' + ('--zapDebug' if debug ==
+os.system('python -m pulsesmsreboot ' + ('--pulseDebug' if debug ==
           True else ''))

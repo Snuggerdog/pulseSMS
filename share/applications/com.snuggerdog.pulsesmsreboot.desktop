@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Name=PulseSMS
+Comment=PulseSMS Desktop for Linux
+Exec=pulsesmsreboot %u
+Icon=com.snuggerdog.pulsesmsreboot
+Type=Application
+Categories=Chat;Network;InstantMessaging;Qt;
+Keywords=Pulsesms;Chat;Pulse;
+StartupWMClass=pulsesms
+MimeType=x-scheme-handler/pulsesms
+Terminal=false
+SingleMainWindow=true
+X-GNOME-UsesNotifications=true
+X-GNOME-SingleWindow=true

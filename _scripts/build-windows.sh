@@ -1,6 +1,6 @@
-for file in ./zapzap/view/ui/*.ui
+for file in ./pulsesmsreboot/view/ui/*.ui
 do
-  export OUTPUT_FILE="./zapzap/view/$(echo ${file} | sed "s/.*\///" | sed "s/.ui/.py/")"
+  export OUTPUT_FILE="./pulsesmsreboot/view/$(echo ${file} | sed "s/.*\///" | sed "s/.ui/.py/")"
   echo "Generating ${OUTPUT_FILE}"
   python3 -m PyQt6.uic.pyuic -o $OUTPUT_FILE -x $file
   sed -i 's/_translate = QtCore.QCoreApplication.translate//g' $OUTPUT_FILE
