@@ -7,7 +7,7 @@ os.system('./_scripts/build-windows.sh')
 os.system('./_scripts/build-translations.sh')
 
 # Activate Custom Debug Settings
-debug = True
+debug = False
 
 # Run the app
 os.system('python -m pulsesmsreboot ' + ('--pulseDebug' if debug ==

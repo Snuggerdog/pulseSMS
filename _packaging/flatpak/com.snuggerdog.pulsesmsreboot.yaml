@@ -18,6 +18,7 @@ finish-args:
   - "--talk-name=org.kde.StatusNotifierWatcher"
   - "--env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess"
   - "--env=QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor"
+  - "--filesystem=/home/amman/Documents/pulseSMS"
 
 cleanup:
   - /include
@@ -30,7 +31,10 @@ modules:
   - name: dbus-python
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --prefix=${FLATPAK_DEST} /home/amman/Documents/pulseSMS/setup.py
+      - "echo Current working directory: $PWD"
+      - "echo Flatpak destination: $FLATPAK_DEST"
+      - chmod +r setup.py
+      - pip3 install --no-deps --prefix=${FLATPAK_DEST} .
     sources:
       - type: archive
         url: https://files.pythonhosted.org/packages/b1/5c/ccfc167485806c1936f7d3ba97db6c448d0089c5746ba105b6eb22dba60e/dbus-python-1.2.18.tar.gz
@@ -38,11 +42,19 @@ modules:
   - name: pulsesmsreboot
     buildsystem: simple
     build-commands:
-      - pip3 install --prefix=${FLATPAK_DEST} /home/amman/Documents/pulseSMS/setup.py
+      #- "cd ~/Documents/pulseSMS"
+      #- "echo Current working directory: $PWD"
+      #- "echo Flatpak destination: $FLATPAK_DEST"
+      - "cd /home/amman/Documents/pulseSMS && echo Current working directory: $PWD && pip3 install --prefix=${FLATPAK_DEST} ."
       - install -Dm644 share/icons/${FLATPAK_ID}.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - install -Dm644 share/applications/${FLATPAK_ID}.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
       - install -Dm644 share/metainfo/${FLATPAK_ID}.appdata.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml
-    #sources:
-    #  - type: git
-    #    url: https://github.com/ra
+    sources:
+      - type: git
+        url: https://github.com/Snuggerdog/pulseSMS.git
+        #type: dir
+        #path: . 
+  
+
     #    tag: 5.3.7
+    #pip install --prefix=${FLATPAK_DEST} .
