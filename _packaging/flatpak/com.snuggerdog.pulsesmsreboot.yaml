@@ -45,13 +45,14 @@ modules:
       #- "cd ~/Documents/pulseSMS"
       #- "echo Current working directory: $PWD"
       #- "echo Flatpak destination: $FLATPAK_DEST"
-      - "cd /home/amman/Documents/pulseSMS && echo Current working directory: $PWD && pip3 install --prefix=${FLATPAK_DEST} ."
+      - pip3 install --prefix=${FLATPAK_DEST} .
       - install -Dm644 share/icons/${FLATPAK_ID}.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - install -Dm644 share/applications/${FLATPAK_ID}.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
-      - install -Dm644 share/metainfo/${FLATPAK_ID}.appdata.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml
+      #- install -Dm644 share/metainfo/${FLATPAK_ID}.appdata.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml
     sources:
       - type: git
         url: https://github.com/Snuggerdog/pulseSMS.git
+        tag: main
         #type: dir
         #path: . 
   
