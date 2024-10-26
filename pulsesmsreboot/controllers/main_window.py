@@ -24,7 +24,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.scd = None
 
         self.setWindowIcon(
-            QIcon('/home/amman/Documents/pulseSMS/assets/icons/tray/icon2.svg'))
+            QIcon('/home/amman/Documents/pulseSMS/pulsesmsreboot/assets/icons/tray/icon2.svg'))
 
         # Object responsible for managing the tray icon
         self.tray = TrayIcon(self)
