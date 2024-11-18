@@ -2,7 +2,7 @@
 ![ZapZap for WhatsApp](share/screenshot/default.png)
 
 ## About
-ZapZap aims to bring the WhatsApp experience on Linux closer to that of a native application. Since Meta does not provide a public API for third-party applications, ZapZap is developed as a [Progressive Web Application](https://en.wikipedia.org/wiki/Progressive_web_app).
+PulseSMSReboot aims to bring the WhatsApp experience on Linux closer to that of a native application. Since Meta does not provide a public API for third-party applications, ZapZap is developed as a [Progressive Web Application](https://en.wikipedia.org/wiki/Progressive_web_app).
 
 ## Download
 <p align="center">
